@@ -23,4 +23,13 @@
         tools:layout_editor_absoluteX="182dp"
         tools:layout_editor_absoluteY="586dp" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyt_favorites"
+        android:layout_width="395dp"
+        android:layout_height="81dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="642dp">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
