@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/view_movie_item"
+        android:id="@+id/rv_movies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

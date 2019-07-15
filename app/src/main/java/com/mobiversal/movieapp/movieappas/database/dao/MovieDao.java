@@ -12,7 +12,11 @@ import java.util.List;
 public interface MovieDao {
     @Query("SELECT * FROM movie")
     public List<Movie> getAllMovies();
+
     @Insert
     public long saveMovie(Movie movie);
+
+    @Query("DELETE FROM movie")
+    public void deleteAll();
 
 }

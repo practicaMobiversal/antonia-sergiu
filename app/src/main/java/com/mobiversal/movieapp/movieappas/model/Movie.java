@@ -25,4 +25,6 @@ public class Movie {
    public void setTitle(String title){
        this.title = title;
    }
+
 }
+
