@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 
 
-
 import com.mobiversal.movieapp.movieappas.database.AppDatabase;
 import com.mobiversal.movieapp.movieappas.model.Keyword;
+import com.mobiversal.movieapp.movieappas.ui.DrawActivity;
 
 public class PreferencesActivity extends ParentActivity {
 
@@ -18,6 +18,8 @@ public class PreferencesActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         initClickListeners();
+        openDrawerActivityOnClick();
+
     }
 
     private String getKeywords() {
@@ -54,5 +56,16 @@ public class PreferencesActivity extends ParentActivity {
             }
         });
     }
+    private void openDrawerActivityOnClick() {
+
+        findViewById(R.id.actors_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PreferencesActivity.this, DrawActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 }
 

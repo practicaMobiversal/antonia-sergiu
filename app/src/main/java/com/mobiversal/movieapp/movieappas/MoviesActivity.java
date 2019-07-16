@@ -28,7 +28,7 @@ public class MoviesActivity extends ParentActivity {
         rvMovies.setLayoutManager(lln);
         new MoviesLoadThread(this) {
             @Override
-            void onDone(@Nullable List<Movie> movies) {
+            protected void onDone(@Nullable List<Movie> movies) {
                 MoviesAdapter moviesAdapter= new MoviesAdapter(movies);
                 rvMovies.setAdapter(moviesAdapter);
 

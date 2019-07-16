@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PreferencesActivity"></activity>
+        <activity android:name=".ui.DrawActivity"></activity>
+        <activity android:name=".PreferencesActivity" />
         <activity android:name=".SavedMoviesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,7 +25,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <activity android:name=".MoviesActivity"/>
+
+        <activity android:name=".MoviesActivity" />
     </application>
 
 </manifest>
