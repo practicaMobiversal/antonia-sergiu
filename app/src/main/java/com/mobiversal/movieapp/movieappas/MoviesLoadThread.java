@@ -12,6 +12,7 @@ import java.util.List;
 
 public abstract class MoviesLoadThread extends AsyncTask<Void, Void, List<Movie>> {
     private Context context;
+
     public MoviesLoadThread(Context context){
         this.context = context;
     }
@@ -19,6 +20,7 @@ public abstract class MoviesLoadThread extends AsyncTask<Void, Void, List<Movie>
     protected List<Movie> doInBackground(Void... voids) {
         return AppDatabase.getInstance(context).movieDao().getAllMovies();
     }
+    @Override
         protected void onPostExecute(List<Movie>movies){
             super.onPostExecute(movies);
             onDone(movies);

@@ -34,8 +34,8 @@ public class MoviesActivity extends ParentActivity {
 
             }
         }.execute(null, null, null);
-        //   List<Movie> movies = AppDatabase.getInstance(this).movieDao().getAllMovies();
-        // MoviesAdapter moviesAdapter = new MoviesAdapter(movies);
-        //rvMovies.setAdapter(moviesAdapter);
+      // List<Movie> movies = AppDatabase.getInstance(this).movieDao().getAllMovies();
+     //   MoviesAdapter moviesAdapter = new MoviesAdapter(movies);
+     //  rvMovies.setAdapter(moviesAdapter);
     }
 }

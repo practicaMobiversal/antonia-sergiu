@@ -1,54 +1,33 @@
 package com.mobiversal.movieapp.movieappas.ui;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-
-
 import com.google.android.material.navigation.NavigationView;
 import com.mobiversal.movieapp.movieappas.R;
 
-public class DrawActivity extends AppCompatActivity {
+public class DrawerActivity extends AppCompatActivity {
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_activty);
-
+        showFirstFragment();
         initToolbar();
         initDrawer();
-        showFirstFragment();
-
-
     }
 
-    private void showFirstFragment() {
-        switchFragment(new FirstFragment());
-    }
-
-    private void showSecondFragment() {
-        switchFragment(new SecondFragment());
-    }
-
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-
-    private void switchFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .replace(R.id.fl_container, fragment)
-                .commit();
-    }
-
-    @SuppressLint({"RestrictedApi", "NewApi"})
+    @SuppressLint("RestrictedApi")
     private void initToolbar() {
         drawerLayout = findViewById(R.id.dl_drawer);
         Toolbar toolbar = findViewById(R.id.tb_toolbar);
@@ -65,15 +44,35 @@ public class DrawActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(menuItem -> {
-            //handleNavigation(menuItem.getItemId());
+            handleNavigation(menuItem.getItemId());
             closeDrawer();
-           return true;
+            return true;
         });
     }
-private void closeDrawer(){
+    private void closeDrawer() {
+
         drawerLayout.closeDrawers();
-}
+    }
+    private void showFirstFragment() {
+        switchFragment(new FirstFragment());
+    }
+
+    private void showSecondFragment() {
+        switchFragment(new SecondFragment());
+    }
+
+
+    private void switchFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .replace(R.id.fl_container, fragment)
+                .commit();
+    }
+
+
 private void handleNavigation(int destinationId){
+
         switch (destinationId){
             case R.id.first:
                 showFirstFragment();

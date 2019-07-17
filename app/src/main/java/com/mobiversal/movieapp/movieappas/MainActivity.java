@@ -1,18 +1,13 @@
 package com.mobiversal.movieapp.movieappas;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-
 import com.mobiversal.movieapp.movieappas.Network.RequestManager;
 import com.mobiversal.movieapp.movieappas.Network.response.MoviesResponse;
-
 import com.mobiversal.movieapp.movieappas.database.AppDatabase;
 import com.mobiversal.movieapp.movieappas.model.Movie;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,9 +20,10 @@ public class MainActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //newActivityOnClick();
+        //getSupportFragmentManager().beginTransaction().add(R.id.fragmentLayout, new SavedMoviesFragment(),"fragment");
+        getMoviesFromDataBase();
 
-        //getMovies();
-        getMoviesFromDatabase();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -36,11 +32,27 @@ public class MainActivity extends ParentActivity {
                 MainActivity.this.startActivity(mainIntent);
                 MainActivity.this.finish();
             }
-        }, SPLASH_DISPLAY_LENGTH);
+        }, 3000);
+    }
+    private void newActivityOnClick(){
+
+        //findViewById(R.id.btnSavedMovies).setOnClickListener(new View.OnClickListener() {
+        // @Override
+        // public void onClick(View view) {
+        //   openSavedMoviesActivity();
+        // }
+        //});
+    }
+    private void openSavedMoviesActivity () {
+
+        Intent savedMoviesIntent=new Intent(this, PreferencesActivity.class);
+        startActivity(savedMoviesIntent);
+
+
     }
 
 
-    private void getMovies() {
+    private void getMoviesFromDataBase() {
         Call<MoviesResponse> request = RequestManager.getInstance().getTopRatedMovies();
         request.enqueue(new Callback<MoviesResponse>() {
             @Override
@@ -51,9 +63,12 @@ public class MainActivity extends ParentActivity {
                 List<Movie> movies = response.body().getResults();
                 for (Movie movie : movies) {
                     Log.d(TAG, movie.getTitle());
-                    AppDatabase.getInstance(MainActivity.this).movieDao().saveMovie(movie);
+                    AppDatabase.getInstance(MainActivity.this)
+                            .movieDao()
+                            .saveMovie(movie);
                 }
-                Log.d(TAG, "Get movies success" + response.body().getResults().toString());
+                onDatabaseUpToDate();
+
             }
 
             @Override
@@ -63,9 +78,11 @@ public class MainActivity extends ParentActivity {
         });
     }
 
-    private void getMoviesFromDatabase() {
+    private void onDatabaseUpToDate() {
+
+
         List<Movie> movies = AppDatabase.getInstance(this).movieDao().getAllMovies();
-        for (Movie movie : movies) {
+        for(Movie movie: movies) {
             Log.d(TAG, movie.getTitle());
         }
 

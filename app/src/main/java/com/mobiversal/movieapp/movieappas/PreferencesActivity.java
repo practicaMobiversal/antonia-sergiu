@@ -9,7 +9,9 @@ import android.widget.EditText;
 
 import com.mobiversal.movieapp.movieappas.database.AppDatabase;
 import com.mobiversal.movieapp.movieappas.model.Keyword;
-import com.mobiversal.movieapp.movieappas.ui.DrawActivity;
+import com.mobiversal.movieapp.movieappas.ui.DrawerActivity;
+import com.mobiversal.movieapp.movieappas.ui.actors.ActorsActivity;
+import com.mobiversal.movieapp.movieappas.ui.genres.GenresActivity;
 
 public class PreferencesActivity extends ParentActivity {
 
@@ -19,7 +21,8 @@ public class PreferencesActivity extends ParentActivity {
         setContentView(R.layout.activity_preferences);
         initClickListeners();
         openDrawerActivityOnClick();
-
+        initClickListenersActors();
+        initClickListenersGenres();
     }
 
     private String getKeywords() {
@@ -28,44 +31,65 @@ public class PreferencesActivity extends ParentActivity {
         String textKeywords = keywords.getEditableText().toString();
         return textKeywords;
     }
-
-    private void initClickListeners() {
-        findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveKeywords(getKeywords());
-            }
-        });
-
-    }
-
-
     private void saveKeywords(String name) {
         Keyword keywordEmpty = new Keyword(name);
         AppDatabase.getInstance(PreferencesActivity.this).keywordDao().saveKeyword(keywordEmpty);
         Log.d(PreferencesActivity.class.getSimpleName(), name);
     }
-
-    private void saveOnClick() {
+    private void initClickListeners() {
         findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 saveKeywords(getKeywords());
-                Intent intent = new Intent (PreferencesActivity.this,MoviesActivity.class);
-                startActivity(intent);
             }
         });
+
     }
+
+
+// save button method
+
+    //private void saveOnClick() {
+     //   findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
+       //     @Override
+         //   public void onClick(View view) {
+          //      saveKeywords(getKeywords());
+            //    Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
+            //    startActivity(intent);
+          //  }
+       // });
+    //}
+
     private void openDrawerActivityOnClick() {
 
         findViewById(R.id.actors_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PreferencesActivity.this, DrawActivity.class);
+                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+    /// actors
+    private void initClickListenersActors() {
+        findViewById(R.id.actors_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(PreferencesActivity.this, ActorsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    /// actors
+    private void initClickListenersGenres() {
+        findViewById(R.id.btnGenres).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(PreferencesActivity.this, GenresActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
-

@@ -4,16 +4,22 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+   <ImageView
+       android:id="@+id/img"
+       android:layout_width="48dp"
+       android:layout_height="48dp"
+
+       />
    <TextView
        android:id="@+id/tv_id"
-   android:layout_width="0dp"
-       android:gravity="center_vertical"
+       android:layout_width="0dp"
        android:layout_weight="0.2"
-   tools:text="23"
-   android:layout_height="wrap_content"
+       android:layout_height="wrap_content"
        android:maxLines="1"
-       android:textSize="16sp"
-       android:ellipsize="end"/>
+       android:ellipsize="end"
+       tools:text="#15"
+       android:textSize="16sp"/>
    <TextView
        android:id="@+id/tv_title"
        android:layout_width="0dp"
@@ -21,6 +27,9 @@
        tools:text="The Godfather"
        android:textSize="18sp"
        android:textStyle="bold"
-       android:layout_height="wrap_content" />
+       android:layout_height="wrap_content"
+
+       />
+
 
 </LinearLayout>
