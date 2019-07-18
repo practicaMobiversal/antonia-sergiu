@@ -36,7 +36,6 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenresView
     }
 
 
-
     @NonNull
     @Override
     public GenresAdapter.GenresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,7 +75,6 @@ public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.GenresView
 
         }
     }
-
 
 }
 

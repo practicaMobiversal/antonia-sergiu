@@ -1,7 +1,7 @@
 package com.mobiversal.movieapp.movieappas.Network;
-
+import com.mobiversal.movieapp.movieappas.Network.response.ActorsResponse;
+import com.mobiversal.movieapp.movieappas.Network.response.GenresResponse;
 import com.mobiversal.movieapp.movieappas.Network.response.MoviesResponse;
-
 import retrofit2.Call;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -36,6 +36,15 @@ public class RequestManager {
 
     public Call<MoviesResponse> getTopRatedMovies() {
         return apiClient.getTopRatedMovies(API_KEY);
+
+    }
+
+    public Call<ActorsResponse> getPopularPeople() {
+        return apiClient.getPopularPeople(API_KEY);
+    }
+
+    public Call<GenresResponse> getMoviesListGenres() {
+        return apiClient.getMoviesListGenres(API_KEY);
 
     }
 }

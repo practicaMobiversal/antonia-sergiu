@@ -22,14 +22,14 @@ public class MainActivity extends ParentActivity {
         setContentView(R.layout.activity_main);
         //newActivityOnClick();
         //getSupportFragmentManager().beginTransaction().add(R.id.fragmentLayout, new SavedMoviesFragment(),"fragment");
-        getMoviesFromDataBase();
+//        getMoviesFromDataBase();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
                 Intent mainIntent = new Intent(MainActivity.this, PreferencesActivity.class);
-                MainActivity.this.startActivity(mainIntent);
+                startActivity(mainIntent);
                 MainActivity.this.finish();
             }
         }, 3000);
@@ -88,4 +88,3 @@ public class MainActivity extends ParentActivity {
 
     }
 }
-

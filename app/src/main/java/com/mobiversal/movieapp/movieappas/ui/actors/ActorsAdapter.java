@@ -10,16 +10,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mobiversal.movieapp.movieappas.R;
 import com.mobiversal.movieapp.movieappas.model.Actor;
 import com.mobiversal.movieapp.movieappas.utils.ImageLoader;
-
 import java.util.List;
+import static com.mobiversal.movieapp.movieappas.utils.Constants.BASE_IMAGE_URL;
+import static com.mobiversal.movieapp.movieappas.utils.Constants.IMAGE_SIZE;
 
 public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsViewHolder> {
-
-
     public List<Actor> getActors() {
         return actors;
     }
@@ -33,8 +31,6 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsView
     public ActorsAdapter(List<Actor> actors) {
         this.actors = actors;
     }
-
-
 
     @NonNull
     @Override
@@ -56,6 +52,7 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsView
 
     class ActorsViewHolder extends RecyclerView.ViewHolder {
 
+
         ImageView actorimage;
         TextView actortext;
         CheckBox actorcheckbox;
@@ -70,8 +67,8 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsView
         }
 
         public void onBind(Actor actor) {
-            ImageLoader.loadUrl(actorimage, actor.getImageUrl(), actorimage.getContext());
-            actortext.setText(actor.getFirstName());
+            ImageLoader.loadUrl(actorimage,BASE_IMAGE_URL+IMAGE_SIZE+actor.getImageUrl(), actorimage.getContext());
+            actortext.setText(actor.getName());
 
 
         }
