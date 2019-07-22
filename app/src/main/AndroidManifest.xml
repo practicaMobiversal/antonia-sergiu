@@ -11,15 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.genres.GenresActivity"/>
+        <activity
+            android:name=".movies.SavedMoviesActivity"
+            android:label="@string/title_activity_search_movies_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.genres.GenresActivity" />
         <activity android:name=".ui.actors.ActorsActivity" />
         <activity android:name=".ui.DrawerActivity" />
         <activity android:name=".PreferencesActivity" />
-        <activity android:name=".SavedMoviesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

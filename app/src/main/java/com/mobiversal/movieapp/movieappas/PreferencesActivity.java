@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.mobiversal.movieapp.movieappas.database.AppDatabase;
 import com.mobiversal.movieapp.movieappas.model.Keyword;
+import com.mobiversal.movieapp.movieappas.movies.SavedMoviesActivity;
 import com.mobiversal.movieapp.movieappas.ui.DrawerActivity;
 import com.mobiversal.movieapp.movieappas.ui.actors.ActorsActivity;
 import com.mobiversal.movieapp.movieappas.ui.genres.GenresActivity;
@@ -20,9 +21,10 @@ public class PreferencesActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         initClickListeners();
-        openDrawerActivityOnClick();
+       // openDrawerActivityOnClick();
         initClickListenersActors();
         initClickListenersGenres();
+        saveOnClick();
     }
 
     private String getKeywords() {
@@ -48,29 +50,29 @@ public class PreferencesActivity extends ParentActivity {
     }
 
 
-// save button method
+ //save button method
 
-    //private void saveOnClick() {
-     //   findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
-       //     @Override
-         //   public void onClick(View view) {
-          //      saveKeywords(getKeywords());
-            //    Intent intent = new Intent(PreferencesActivity.this, MoviesActivity.class);
-            //    startActivity(intent);
-          //  }
-       // });
-    //}
-
-    private void openDrawerActivityOnClick() {
-
-        findViewById(R.id.actors_btn).setOnClickListener(new View.OnClickListener() {
+    private void saveOnClick() {
+        findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
+                saveKeywords(getKeywords());
+                Intent intent = new Intent(PreferencesActivity.this, SavedMoviesActivity.class);
                 startActivity(intent);
             }
         });
     }
+
+//    private void openDrawerActivityOnClick() {
+//
+//        findViewById(R.id.actors_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(PreferencesActivity.this, DrawerActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 
     /// actors
     private void initClickListenersActors() {
@@ -92,4 +94,6 @@ public class PreferencesActivity extends ParentActivity {
             }
         });
     }
+
+
 }
