@@ -1,5 +1,4 @@
 package com.mobiversal.movieapp.movieappas.ui.actors;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,7 +61,7 @@ public class ActorsActivity extends AppCompatActivity {
 //                            .actorDao()
 //                            .saveActor(actor);
                 }
-                onDatabaseUpToDate();
+                getActorsOnClick();
 
             }
 
@@ -74,13 +73,16 @@ public class ActorsActivity extends AppCompatActivity {
             }
 
 
-            private void onDatabaseUpToDate() {
 
+    public void getActorsOnClick() {
+        findViewById(R.id.save_actors).setOnClickListener(view -> {
 
-                List<Actor> actors = AppDatabase.getInstance(this).actorDao().getAllActors();
-                for (Actor actor : actors) {
-                    Log.d(TAG, actor.getName());
-                }
-
+            AppDatabase.getInstance(ActorsActivity.this).actorDao().deleteAll();
+            for (Actor actor: adapter.getSelectedActors() ) {
+                AppDatabase.getInstance(ActorsActivity.this).actorDao().saveActor(actor);
+                Log.d(TAG, actor.getName());
             }
-        }
+            onBackPressed();
+        });
+    }
+}

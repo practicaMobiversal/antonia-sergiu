@@ -1,4 +1,4 @@
-package com.mobiversal.movieapp.movieappas;
+package com.mobiversal.movieapp.movieappas.ui.movies;
 
 import android.content.Context;
 import android.os.AsyncTask;

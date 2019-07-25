@@ -1,4 +1,4 @@
-package com.mobiversal.movieapp.movieappas.movies.ui.main;
+package com.mobiversal.movieapp.movieappas.movies.ui.main.fragments4saved;
 
 
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import com.mobiversal.movieapp.movieappas.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoritesFragment extends Fragment {
+public class WatchedFragment extends Fragment {
 
 
-    public FavoritesFragment() {
+    public WatchedFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class FavoritesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false);
+        return inflater.inflate(R.layout.fragment_watched2, container, false);
     }
 
 }

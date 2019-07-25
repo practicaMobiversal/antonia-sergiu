@@ -1,4 +1,4 @@
-package com.mobiversal.movieapp.movieappas;
+package com.mobiversal.movieapp.movieappas.ui.movies;
 
 import android.os.Bundle;
 
@@ -6,7 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobiversal.movieapp.movieappas.database.AppDatabase;
+import com.mobiversal.movieapp.movieappas.ParentActivity;
+import com.mobiversal.movieapp.movieappas.R;
 import com.mobiversal.movieapp.movieappas.model.Movie;
 
 import java.util.List;

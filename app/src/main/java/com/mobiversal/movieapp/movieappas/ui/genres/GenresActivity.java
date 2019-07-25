@@ -30,6 +30,7 @@ public class GenresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genres);
         rrecyclerview = findViewById(R.id.rv_genres);
+        getGenresOnClick();
         setUpRecyclerView();
         getActorsFromDataBase();
     }
@@ -54,7 +55,7 @@ public class GenresActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 for (Genre genre : genres) {
-                    Log.d(TAG,genre.getName());
+                    Log.d(TAG,genre.getGenre());
 //                    AppDatabase.getInstance(ActorsActivity.this)
 //                            .genreDao()
 //                            .saveGenre(genre);
@@ -71,13 +72,15 @@ public class GenresActivity extends AppCompatActivity {
     }
 
 
-    private void onDatabaseUpToDate() {
-
-
-        List<Genre> genres = AppDatabase.getInstance(this).genreDao().getAllGenres();
-        for (Genre genre : genres) {
-            Log.d(TAG, genre.getName());
-        }
+    public void getGenresOnClick() {
+        findViewById(R.id.save_genres).setOnClickListener(view -> {
+            AppDatabase.getInstance(GenresActivity.this).genreDao().deleteAll();
+            for (Genre genre: adapter.getSelectedGenres() ) {
+                AppDatabase.getInstance(GenresActivity.this).genreDao().saveGenre(genre);
+                Log.d(TAG, genre.getGenre());
+            }
+            onBackPressed();
+        });
 
     }
 }

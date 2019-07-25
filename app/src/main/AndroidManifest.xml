@@ -12,12 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".movies.SavedMoviesActivity"
-            android:label="@string/title_activity_search_movies_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".movies.ui.main.fragments4search.SearchMoviesActivity"
+            android:label="@string/title_activity_search_movies"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.genres.GenresActivity" />
         <activity android:name=".ui.actors.ActorsActivity" />
-        <activity android:name=".ui.DrawerActivity" />
         <activity android:name=".PreferencesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -32,7 +31,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MoviesActivity" />
+        <activity android:name=".ui.movies.MoviesActivity" />
     </application>
 
 </manifest>

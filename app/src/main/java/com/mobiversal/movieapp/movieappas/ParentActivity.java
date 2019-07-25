@@ -6,7 +6,9 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ParentActivity extends AppCompatActivity {
+
     protected String tag=MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

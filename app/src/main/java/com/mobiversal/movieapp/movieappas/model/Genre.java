@@ -2,44 +2,52 @@ package com.mobiversal.movieapp.movieappas.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "genre")
 
+@Entity(tableName = "genre")
 public class Genre {
-    @PrimaryKey
-    @ColumnInfo(name = "id")
-    private long id;
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name="id")
+    private int id;
 
     @SerializedName("name")
-    private String name;
+    @ColumnInfo(name="genre")
+    private String genre;
 
-    public Genre(long id, String name) {
+    @Ignore
+    private boolean selected;
+
+    public Genre(int id, String genre) {
         this.id = id;
-        this.name = name;
+        this.genre = genre;
     }
 
-
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-
-    public String getName() {
-        return name;
+    public boolean isSelected() {
+        return selected;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
+    public String getGenre() {
+        return genre;
+    }
 
-
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 }

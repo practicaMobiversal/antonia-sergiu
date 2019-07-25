@@ -16,8 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobiversal.movieapp.movieappas.R;
 import com.mobiversal.movieapp.movieappas.model.Actor;
 import com.mobiversal.movieapp.movieappas.utils.ImageLoader;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import static com.mobiversal.movieapp.movieappas.utils.Constants.BASE_IMAGE_URL;
@@ -26,23 +24,22 @@ import static com.mobiversal.movieapp.movieappas.utils.Constants.IMAGE_SIZE;
 public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsViewHolder> {
 
 
-    List<Actor> actors;
-    public List<Integer> actorId;
+    public List<Actor> actors;
+    public List<Actor> selectedActors;
 
     public void setActors(List<Actor> actors) {
         this.actors = actors;
     }
 
+    public List<Actor> getSelectedActors() {
+        return selectedActors;
+    }
+
     public ActorsAdapter(List<Actor> actors) {
 
         this.actors = actors;
-        actorId = new ArrayList<>();
+        selectedActors = new ArrayList<>();
     }
-
-    public List<Integer> getActorId() {
-        return actorId;
-    }
-
     @NonNull
     @Override
     public ActorsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -81,24 +78,34 @@ public class ActorsAdapter extends RecyclerView.Adapter<ActorsAdapter.ActorsView
         public void onBind(Actor actor) {
             ImageLoader.loadUrl(actorimage, BASE_IMAGE_URL + IMAGE_SIZE + actor.getImageUrl(), actorimage.getContext());
             actortext.setText(actor.getName());
+            actorcheckbox.setOnCheckedChangeListener(null);
             setCheckboxOnClick(actor);
-        }
+            actorcheckbox.setChecked(actor.isSelected());
 
 
+
+    }
         private void setCheckboxOnClick(Actor actor) {
 
             actorcheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
+                actor.setSelected(isChecked);
+
                 if (isChecked) {
-                    actorId.add(actor.getId());
-                    Log.d("Actor ID is", actor.getName() + isChecked);
+                    selectedActors.add(actor);
+                    Log.d("Actor ID is", actor.getName());
                 } else {
 
-                    actorId.remove(new Integer(actor.getId()));
-                    Log.d("Actor is  removed", actor.getName());
+                    selectedActors.remove(actor);
+                    Log.d("Actor is removed", actor.getName());
                 }
             });
         }
+
     }
 }
+
+
+
+
 

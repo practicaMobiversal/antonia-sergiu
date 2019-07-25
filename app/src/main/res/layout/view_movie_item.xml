@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="150dp">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
 
    <ImageView
        android:id="@+id/img"
        android:layout_width="48dp"
        android:layout_height="48dp"
-
+       app:layout_constraintBottom_toTopOf="@id/favorites"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
        />
-   <TextView
-       android:id="@+id/tv_id"
-       android:layout_width="0dp"
-       android:layout_weight="0.2"
-       android:layout_height="wrap_content"
-       android:maxLines="1"
-       android:ellipsize="end"
-       tools:text="#15"
-       android:textSize="16sp"/>
+
    <TextView
        android:id="@+id/tv_title"
        android:layout_width="0dp"
-       android:layout_weight="0.8"
-       tools:text="The Godfather"
-       android:textSize="18sp"
-       android:textStyle="bold"
        android:layout_height="wrap_content"
-
+       android:layout_weight="0.8"
+       android:textSize="20sp"
+       android:textStyle="bold"
+       app:layout_constraintBottom_toTopOf="@id/watched"
+       app:layout_constraintLeft_toRightOf="@id/img"
+       app:layout_constraintTop_toTopOf="parent"
+       tools:text="The Godfather" />
        />
 
+      <Button
+          android:id="@+id/favorites"
+          android:layout_width="100dp"
+          android:layout_height="56dp"
+          android:text="Favorite"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintLeft_toLeftOf="parent"
+          android:background="@drawable/button_theme"
+          android:textColor="#ffff"/>
+
+      <Button
+          android:id="@+id/watched"
+          android:layout_width="100dp"
+          android:layout_height="56dp"
+          android:text="Watched"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
+          android:textColor="#ffff"
+          android:background="@drawable/button_theme"/>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

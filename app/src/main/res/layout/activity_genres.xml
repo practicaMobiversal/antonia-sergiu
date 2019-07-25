@@ -18,7 +18,7 @@
         app:titleTextColor="#FFFF" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/save_genres"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:background="#00000000"

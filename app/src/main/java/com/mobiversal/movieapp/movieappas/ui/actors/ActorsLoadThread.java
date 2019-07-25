@@ -1,4 +1,4 @@
-package com.mobiversal.movieapp.movieappas;
+package com.mobiversal.movieapp.movieappas.ui.actors;
 import android.content.Context;
 import android.os.AsyncTask;
 import androidx.annotation.Nullable;
